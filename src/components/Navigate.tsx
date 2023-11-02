@@ -1,23 +1,27 @@
 import { Link } from "react-router-dom";
 
 const Navigate = () => {
+
+  const handleClick = () =>{
+    localStorage.removeItem('idDetail')
+  }
   return (
-    <nav className="w-full h-[100px] fixed">
-      <div className="w-[80%] mx-auto h-full text-white flex justify-between items-center ">
+    <nav className="h-[100px] flex justify-center">
+      <div className=" w-[80%] mx-auto fixed h-[100px] text-white flex justify-between items-center ">
         <h2>Logo</h2>
         <ul className="flex gap-10">
           <li>
-            <Link to={"/"}>Movies</Link>
+            <Link to={"/"} onClick={handleClick}>Movies</Link>
           </li>
 
           <li>
-            <Link to={"/series"}>Series</Link>
+            <Link to={"/series"} onClick={handleClick}>Series</Link>
           </li>
           <li>
-            <Link to={"/anime"}>Anime</Link>
+            <Link to={"/anime"} onClick={handleClick}>Anime</Link>
           </li>
           <li>
-            <Link to={'/searchMovie'}>SearchMovie</Link>
+            <Link to={'/searchMovie'} onClick={handleClick}>SearchMovie</Link>
           </li>
         </ul>
       </div>

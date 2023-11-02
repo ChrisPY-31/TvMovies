@@ -3,7 +3,7 @@ import { PropsMovies } from "../Interfaces/MoviesInterface";
 import { useAppSelector , useAppDispatch} from "../store/hooks";
 import { useNavigate } from "react-router-dom";
 import type {MouseEventHandler} from 'react'
-import { getId } from "../store/movies/MovieSlice";
+import { getId, getboolen } from "../store/movies/MovieSlice";
 
 interface Props {
   movieCard: PropsMovies;
@@ -15,8 +15,13 @@ const MovieCard = ({ movieCard }: Props) => {
   const dispatch = useAppDispatch()
 
   const handleDelete:MouseEventHandler<HTMLImageElement> = () =>{
-    navigate(`detail:${movieCard.id}`)
+    let idCard:number = movieCard.id
+    localStorage.setItem('idDetail',idCard.toString())
+    navigate(`detail:${idCard}`)
+    
+    dispatch(getboolen())
     dispatch(getId(movieCard.id))
+
   }
 
   return (
@@ -28,7 +33,6 @@ const MovieCard = ({ movieCard }: Props) => {
         onClick={handleDelete}
       />
       <div className="text-center mt-2">
-        <h2>{movieCard.title}</h2>
         <p>{movieCard.release_date.substring(0,4)}</p>
       </div>
     </div>
