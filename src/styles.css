@@ -9,3 +9,14 @@
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background: transparent;
 }
+.portada{
+  background:linear-gradient(0deg, rgba(0,0,0 ,0.5),rgba(0,0,0 ,0.5)), #1b1b32 ; 
+  position: relative;
+  z-index: 10;
+}
+/* .portada::after{
+  background: linear-gradient(90deg, rgb(27, 21, 30) 10%, rgba(27, 21, 30, 0.98) 20%, rgba(27, 21, 30, 0.97) 25%, rgba(27, 21, 30, 0.95) 35%, rgba(27, 21, 30, 0.94) 40%, rgba(27, 21, 30, 0.92) 45%, rgba(27, 21, 30, 0.9) 50%, rgba(27, 21, 30, 0.87) 55%, rgba(27, 21, 30, 0.82) 60%, rgba(27, 21, 30, 0.75) 65%, rgba(27, 21, 30, 0.63) 70%, rgba(27, 21, 30, 0.45) 75%, rgba(27, 21, 30, 0.27) 80%, rgba(27, 21, 30, 0.15) 85%, rgba(27, 21, 30, 0.08) 90%, rgba(27, 21, 30, 0.03) 95%, rgba(27, 21, 30, 0));
+} */
+.contenedor {
+  backdrop-filter: blur(10px);
+}

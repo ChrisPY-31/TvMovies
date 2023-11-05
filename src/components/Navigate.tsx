@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import '../styles.css'
 
 const Navigate = () => {
 
@@ -6,8 +7,8 @@ const Navigate = () => {
     localStorage.removeItem('idDetail')
   }
   return (
-    <nav className="h-[100px] flex justify-center">
-      <div className=" w-[80%] mx-auto fixed h-[100px] text-white flex justify-between items-center ">
+    <nav className="h-[70px] w-full flex justify-center fixed z-10 contenedor ">
+      <div className=" w-[80%] mx-auto h-[70px] text-white text-[18px] font-bold opacity-100 flex justify-between items-center ">
         <h2>Logo</h2>
         <ul className="flex gap-10">
           <li>

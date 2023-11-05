@@ -31,8 +31,8 @@ const Movies = () => {
   return (
     <div className="w-full">
       <MovieRandom />
-      <div className="w-[80%] mx-auto">
-        <h1 className="text-white text-3xl pb-5 ">Tendencia</h1>
+      <div className="w-[90%] mx-auto my-5">
+        <h2 className="text-white text-3xl pb-5 ">Tendencia</h2>
         <div className="flex gap-5 overflow-x-auto custom-scrollbar">
           {movie.map((movieCard) => (
             <MovieCard key={movieCard.id} movieCard={movieCard} />
@@ -40,8 +40,8 @@ const Movies = () => {
         </div>
       </div>
 
-      <div className="w-[80%] mx-auto">
-        <h1 className="text-white text-3xl pb-5">Tendencia</h1>
+      <div className="w-[90%] mx-auto my-5">
+        <h2 className="text-white text-3xl pb-5">Kids</h2>
         <div className="flex gap-5 overflow-x-auto custom-scrollbar">
           {movieKids.map((movieCard) => (
             <MovieCard key={movieCard.id} movieCard={movieCard} />

@@ -7,6 +7,7 @@ export interface PropsMovies {
     release_date:string,
     vote_average:number,
     backdrop_path:string
+    overview?:string
 }
 export interface PropsDetail {
     id:number
@@ -19,6 +20,7 @@ export interface PropsDetail {
     vote_average:number
 }
 export interface PropsCrew{
+    id:number
     name:string
     profile_path:string
     known_for_department:string,
