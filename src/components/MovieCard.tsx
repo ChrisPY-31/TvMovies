@@ -17,7 +17,7 @@ const MovieCard = ({ movieCard }: Props) => {
   const handleDelete:MouseEventHandler<HTMLImageElement> = () =>{
     let idCard:number = movieCard.id
     localStorage.setItem('idDetail',idCard.toString())
-    navigate(`detail:${idCard}`)
+    navigate(`/detail:${idCard}`)
     
     dispatch(getboolen())
     dispatch(getId(movieCard.id))
@@ -26,6 +26,7 @@ const MovieCard = ({ movieCard }: Props) => {
 
   return (
     <div className="text-white min-w-[200px] ">
+      
       <img
         className="rounded-lg cursor-pointer"
         src={`${image}${movieCard.poster_path}`}

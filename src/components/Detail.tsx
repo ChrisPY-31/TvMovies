@@ -13,9 +13,12 @@ const Detail = () => {
   const [cardDetail, setCartDetail] = useState<PropsDetail>({} as PropsDetail);
   const [crew, setCrew] = useState<PropsCrew[]>([]);
   const [similar, setSimilar] = useState<PropsDetail[]>([]);
+  const [porcentaje , setPorcentaje] = useState<string>('')
 
+  let id = localStorage.getItem("idDetail");
+  console.log(id)
   useEffect(() => {
-    let id = localStorage.getItem("idDetail");
+    
     const movieDetail = async () => {
       const { data } = await axios.get(
         `https://api.themoviedb.org/3/movie/${Number(
@@ -25,7 +28,7 @@ const Detail = () => {
       setCartDetail(data);
     };
     movieDetail();
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     let id = localStorage.getItem("idDetail");
@@ -55,30 +58,63 @@ const Detail = () => {
     };
     recomendation();
   }, []);
-  console.log(cardDetail);
+  const nuevoPorcertanje:string = (cardDetail.vote_average * 10).toString().substring(0, 2);
+
+  useEffect(() =>{
+    setTimeout(() =>{
+      setPorcentaje(nuevoPorcertanje)
+    },500)
+  },[cardDetail])
+
+  console.log(porcentaje)
 
   return (
     <div className="min-h-screen ">
-      {/* <div className="absolute w-full opacity-50 h-[700px] bg-gradient-to-r from-[#1b1b32]"></div> */}
-
-      <div className="text-white bg-cover h-[90vh]" style={divStyle}>
-        <div className="w-[90%] mx-auto pt-32 flex gap-10 justify-center items-center h-[600px]">
+      <div className="absolute w-full h-[750px]  bg-gradient-to-t from-[#040714]"></div>
+      <div className="text-white bg-cover h-[100vh]" style={divStyle}>
+        <div className="w-[90%] mx-auto pt-32 flex gap-10 items-center h-[600px]">
           <img
-            className="rounded-lg max-w-[350px] h-[485px]"
+            className="rounded-lg max-w-[350px] h-[485px] absolute left-28"
             src={`${image}${cardDetail.poster_path}`}
             alt=""
           />
-          <div className="w-2/3 h-[250px] px-10 py-5 flex flex-col justify-around">
+          <div className="w-2/3 h-[300px] px-10 py-2 flex flex-col justify-between absolute right-20  ">
             <div className="flex gap-3">
               <h3 className="font-bold text-5xl ">{cardDetail.title}</h3>
-              {/* <span className="text-4xl font-light">{cardDetail.release_date.substring(0,4)}</span> */}
             </div>
+
+            <div className="flex gap-5">
+              <p>{cardDetail.release_date}</p>
+              <div className="flex">
+                {cardDetail.genres?.map((ele) => (
+                  <span className="px-1">{ele.name} </span>
+                ))}
+              </div>
+            </div>
+
+            {cardDetail.vote_average && (
+              <div className="w-16 h-16 font-bold ">
+                <div className="bg-[#0c0c18] rounded-full">
+                  <CircularProgressbar
+                    value={Number(porcentaje )}
+                    text={`${porcentaje ? porcentaje:'0' }%`}
+                    styles={buildStyles({
+                      pathTransitionDuration:1.5,
+                      textColor: "#FFF",
+                      textSize: "32px",
+                      pathColor: "#3CCC26",
+                    })}
+                  />
+                </div>
+              </div>
+            )}
+
             <div>
-              <p className="font-semibold text-lg">{cardDetail.overview && 'Vista General'}</p>
+              <p className="font-bold text-lg">
+                {cardDetail.overview && "Vista General"}
+              </p>
               <p>{cardDetail.overview}</p>
             </div>
-            <p>{cardDetail.popularity}</p>
-            <p>{cardDetail.release_date}</p>
           </div>
         </div>
       </div>

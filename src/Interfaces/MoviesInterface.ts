@@ -18,6 +18,10 @@ export interface PropsDetail {
     poster_path:string
     backdrop_path:string
     vote_average:number
+    genres:[{
+        id:number,
+        name:string
+    }]
 }
 export interface PropsCrew{
     id:number

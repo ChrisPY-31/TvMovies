@@ -21,13 +21,13 @@ const MovieRandom = () => {
   return (
     <main className="w-full h-[700px]  ">
       <div className="h-full w-full">
-        <div className="absolute w-full h-[700px] bg-gradient-to-t  from-[#040714]  "></div>
-        <div className="absolute z-40 bottom-[150px] left-[100px] text-white  h-[200px] max-w-[700px] ">
+        <div className="absolute w-full h-[700px] bg-gradient-to-t  from-[#040714] "></div>
+        <div className="absolute z-40 bottom-[150px] left-[80px] text-white h-[200px] max-w-[700px] ">
           <h2 className="text-5xl pb-4">{movie?.title}</h2>
           <p className="text-[18px]">{movie?.overview}</p>
         </div>
         <img
-          className="h-full w-full object-cover"
+          className="h-[100%] w-full object-cover "
           src={`${image}${movie?.poster_path}`}
           alt=""
         />
