@@ -10,21 +10,28 @@ interface Props {
 
 const SearchCard = ({ movieCard, image }: Props) => {
   const navigate = useNavigate();
-    const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   const handleClick = () => {
-    let idCard = movieCard.id
-    localStorage.setItem('idDetail',idCard.toString())
+    let idCard = movieCard.id;
+    localStorage.setItem("idDetail", idCard.toString());
     navigate(`/detail:${idCard}`);
-    dispatch(getboolen())
+    dispatch(getboolen());
   };
   return (
-    <img
-      onClick={handleClick}
-      className="h-[200px] min-w-[350px] object-cover rounded-md mb-10 "
-      src={`${image}${movieCard.poster_path}`}
-      alt=""
-    />
+    <div className="bg-white rounded-lg flex mt-5  ">
+      <img
+        onClick={handleClick}
+        className="h-[150px] w-[100px] object-cover rounded-md cursor-pointer"
+        src={`${image}${movieCard.poster_path}`}
+        alt=""
+      />
+      <div className="mx-4 my-5 flex flex-col justify-center">
+        <p className="font-bold text-lg ">{movieCard.title}</p>
+        <p className="text-[#999999]" >{movieCard.release_date}</p>
+        <p>{movieCard.overview?.substring(0 , 300)}...</p>
+      </div>
+    </div>
   );
 };
 

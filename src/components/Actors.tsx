@@ -9,6 +9,7 @@ interface Props {
 
 const Actors = ({ crew }: Props) => {
   const { image } = useAppSelector((state) => state.movies);
+  console.log(crew)
   return (
     <div className="w-[90%] mx-auto mt-8">
       <h2 className="text-white text-4xl pb-8 font-bold ">Crew</h2>
@@ -20,7 +21,7 @@ const Actors = ({ crew }: Props) => {
           >
             <div className="">
               <img
-                src={`${image}${person.profile_path}`}
+                src={`${image}${person.profile_path}`?`${image}${person.profile_path}` :'https://thumbs.dreamstime.com/b/vector-de-perfil-avatar-predeterminado-foto-usuario-medios-sociales-icono-183042379.jpg'}
                 alt={person.name}
                 className="h-[75%] w-full rounded-t-lg"
               />
