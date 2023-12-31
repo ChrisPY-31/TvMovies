@@ -9,7 +9,6 @@ interface Props {
 
 const Actors = ({ crew }: Props) => {
   const { image } = useAppSelector((state) => state.movies);
-  console.log(crew)
   return (
     <div className="w-[90%] mx-auto mt-8">
       <h2 className="text-white text-4xl pb-8 font-bold ">Crew</h2>

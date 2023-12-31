@@ -16,7 +16,6 @@ const Detail = () => {
   const [porcentaje , setPorcentaje] = useState<string>('')
 
   let id = localStorage.getItem("idDetail");
-  console.log(id)
   useEffect(() => {
     
     const movieDetail = async () => {
@@ -66,7 +65,6 @@ const Detail = () => {
     },500)
   },[cardDetail])
 
-  console.log(porcentaje)
 
   return (
     <div className="min-h-screen ">

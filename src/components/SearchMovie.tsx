@@ -11,10 +11,15 @@ const SearchMovie = () => {
   const [searchFilter, setSearchFilter] = useState<PropsMovies[]>([]);
   const [recomendation, setRecomendation] = useState<PropsMovies[]>([]);
   const { image } = useAppSelector((state) => state.movies);
+  const [loadding, setLoadding] = useState<Boolean>(false);
   //
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
+    setLoadding(true);
+    setTimeout(() => {
+      setLoadding(false);
+    }, 2000);
     const searchMovie = async () => {
       const { data } = await axios.get(
         `https://api.themoviedb.org/3/search/movie?query=${search}&api_key=717567e8723fe13b0ea61ab7a37f74ec`
@@ -22,8 +27,8 @@ const SearchMovie = () => {
       setSearchFilter(data.results);
     };
     searchMovie();
-    setSearch("");
     setMensaje(search);
+    setSearch("");
   };
   useEffect(() => {
     const ficcion = async () => {
@@ -35,8 +40,10 @@ const SearchMovie = () => {
     ficcion();
   }, []);
 
-  const dataSearch = recomendation.filter((data) => data.backdrop_path !== null);
-  const searchUser = searchFilter.filter(data => data.backdrop_path !==null)
+  const dataSearch = recomendation.filter(
+    (data) => data.backdrop_path !== null
+  );
+  const searchUser = searchFilter.filter((data) => data.backdrop_path !== null);
 
   return (
     <div className="w-[90%] mx-auto  pt-20">
@@ -57,10 +64,21 @@ const SearchMovie = () => {
               Recomendados Para ti:{" "}
             </h3>
             <div>
-              {dataSearch.map(MovieCard =>(
-                  <SearchCard movieCard={MovieCard} image={image}/>
+              {dataSearch.map((MovieCard) => (
+                <SearchCard movieCard={MovieCard} image={image} />
               ))}
             </div>
+          </div>
+        ) : loadding ? (
+          <div className="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
           </div>
         ) : (
           <div className="mt-10 w-90%">

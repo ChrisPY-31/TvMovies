@@ -30,3 +30,14 @@ export interface PropsCrew{
     known_for_department:string,
     character:string
 }
+export interface PropsVideo{
+    id:string,
+    key?:string,
+    iso_639_1:string
+    iso_3166_1:string
+    official:boolean  
+    site:string
+    size:number
+    type:string
+}
+

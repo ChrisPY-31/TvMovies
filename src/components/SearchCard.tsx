@@ -22,7 +22,7 @@ const SearchCard = ({ movieCard, image }: Props) => {
     <div className="bg-white rounded-lg flex mt-5  ">
       <img
         onClick={handleClick}
-        className="h-[150px] w-[100px] object-cover rounded-md cursor-pointer"
+        className="h-[150px] min-w-[110px] object-cover rounded-md cursor-pointer"
         src={`${image}${movieCard.poster_path}`}
         alt=""
       />
